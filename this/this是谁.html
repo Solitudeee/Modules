@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+
+<body>
+<button>确定</button>
+
+<script>
+    var that;
+    var _that;
+    class Star{
+        constructor(uname,age) {
+            //constructor 里面的this指向的是 创建的实例对象
+            that=this;
+            console.log(this);   //Star类
+            this.uname=uname;
+            this.age=age
+            this.btn=document.querySelector('button');
+            this.btn.onclick=this.sing;
+        }
+        sing(){
+            //这个sing方法里面的this 指向的是btn这个按钮，因为这个按钮调用了这个函数
+            console.log(this)  //点击按钮调用sing后，输出<button>确定</button>
+            console.log(this.uname)//点击按钮调用sing后，输出undefined，因为按钮没有名字
+        }
+        dance(){
+            _that=this;
+            console.log(this)  //haha实例
+        }
+    }
+    var haha=new Star('haha')
+    console.log(that===haha)   //true
+    haha.dance()
+
+    console.log(_that===haha)  //true
+
+</script>
+</body>
+</html>
